@@ -1,7 +1,7 @@
 import express from "express";
 
 import bodyParser from "body-parser";
-import StripeWebhookController from "../controllers/StripeWebhookController.js";
+import StripeWebhookController from "../controllers/stripeWebhookController.js";
 
 const webHookRouter = express.Router();
 
