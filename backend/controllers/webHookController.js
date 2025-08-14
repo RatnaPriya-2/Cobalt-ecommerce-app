@@ -8,7 +8,7 @@ const stripeWebhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
 const stripe = new Stripe(stripeSecretKey);
 
-const webHookController = async (req, res) => {
+const StripeWebhookController = async (req, res) => {
   let event;
   try {
     event = stripe.webhooks.constructEvent(
@@ -66,4 +66,4 @@ const webHookController = async (req, res) => {
   }
 };
 
-export default webHookController;
+export default StripeWebhookController;
