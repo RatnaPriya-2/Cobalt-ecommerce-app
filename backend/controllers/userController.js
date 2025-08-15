@@ -50,8 +50,8 @@ const register = async (req, res) => {
 
     res.cookie("userToken", userToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "Lax",
+      secure: true,
+      sameSite: "None",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 
@@ -88,7 +88,7 @@ const login = async (req, res) => {
     res.cookie("userToken", userToken, {
       httpOnly: true,
       secure: false,
-      sameSite: "Lax",
+      sameSite: "None",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
@@ -106,7 +106,9 @@ const login = async (req, res) => {
 
 const logout = async (req, res) => {
   try {
+    console.log(object.keys(req.cookies));
     let token = req.cookies.userToken;
+    console.log(token);
 
     if (!token) {
       return res.json({
@@ -117,8 +119,8 @@ const logout = async (req, res) => {
 
     res.cookie("userToken", "", {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "Lax",
+      secure: true,
+      sameSite: "None",
       maxAge: 0,
     });
     return res.status(201).json({
@@ -174,8 +176,8 @@ const adminLogin = async (req, res) => {
     );
     res.cookie("adminToken", adminToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "Lax",
+      secure: true,
+      sameSite: "None",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
     return res.status(201).json({
@@ -202,8 +204,8 @@ const adminLogout = async (req, res) => {
 
     res.cookie("adminToken", "", {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "Lax",
+      secure: true,
+      sameSite: "None",
       maxAge: 0,
     });
     return res.status(201).json({

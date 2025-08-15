@@ -13,7 +13,10 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 4000;
-const allowedOrigins = ["http://localhost:5173", "http://localhost:5174"];
+const allowedOrigins = [
+  "https://cobalt-ecommerce-user-frontend.netlify.app/",
+  "https://cobalt-ecommerce-admin-frontend.netlify.app/",
+];
 
 connectDB();
 connectCloudinary();

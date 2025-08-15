@@ -244,10 +244,6 @@ const AppProvider = ({ children }) => {
   }, [searchTerm, categories, subCategories, sortValue]);
 
   useEffect(() => {
-    if (userToken) getCartData();
-  }, [userToken]);
-
-  useEffect(() => {
     setCartPrice(
       cartProducts.reduce((acc, val) => acc + val.price * val.quantity, 0)
     );

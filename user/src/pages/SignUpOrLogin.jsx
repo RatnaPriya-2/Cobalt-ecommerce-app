@@ -10,7 +10,7 @@ import { useEffect } from "react";
 const SignUpOrLogin = () => {
   const navigate = useNavigate();
   const { formData, handleFormData, setFormData } = useSignup();
-  const { setUserToken, state, setState } = useGlobalContext();
+  const { setUserToken, state, setState, getCartData } = useGlobalContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,16 +29,24 @@ const SignUpOrLogin = () => {
 
       if (response.data.success) {
         setUserToken(response.data.userToken);
+        localStorage.setItem("userToken", response.data.userToken);
         setFormData({
           name: "",
           email: "",
           password: "",
         });
+
         toast.success(response.data.message);
-        setState("Login");
-        if (state === "Login") {
-          navigate("/");
-        }
+
+        navigate("/");
+        // Fetch cart **after a slight delay**, giving browser time to set cookies
+        setTimeout(async () => {
+          try {
+            await getCartData(); // cookie now attached automatically
+          } catch (err) {
+            console.error(err);
+          }
+        }, 1000); // 50ms is usually enough
       } else {
         console.log(response.data.message);
         toast.error(response.data.message);
