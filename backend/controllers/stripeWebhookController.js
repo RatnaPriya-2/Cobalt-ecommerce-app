@@ -11,6 +11,10 @@ const stripe = new Stripe(stripeSecretKey);
 const StripeWebhookController = async (req, res) => {
   let event;
   try {
+    console.log("👉 typeof req.body:", typeof req.body);
+    console.log("👉 Buffer?", Buffer.isBuffer(req.body));
+    console.log("👉 Stripe signature header:", req.headers["stripe-signature"]);
+
     event = stripe.webhooks.constructEvent(
       req.body,
       req.headers["stripe-signature"],
