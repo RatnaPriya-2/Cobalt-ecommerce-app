@@ -5,6 +5,7 @@ import Product from "./Product";
 
 const LatestCollections = () => {
   let { products } = useGlobalContext();
+  console.log(products)
 
   let [latestProducts, setLatestProducts] = useState([]);
 
