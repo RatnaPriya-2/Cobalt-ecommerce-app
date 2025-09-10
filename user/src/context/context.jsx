@@ -41,6 +41,7 @@ const AppProvider = ({ children }) => {
       });
 
       if (response.data.success) {
+        console.log("Products from backend:", response.data);
         setProducts(response.data.products);
       } else {
         console.log(response.data.message);
