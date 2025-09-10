@@ -106,7 +106,7 @@ const login = async (req, res) => {
 
 const logout = async (req, res) => {
   try {
-    console.log(object.keys(req.cookies));
+    console.log(Object.keys(req.cookies));
     let token = req.cookies.userToken;
     console.log(token);
 
