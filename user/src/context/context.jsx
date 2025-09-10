@@ -52,11 +52,10 @@ const AppProvider = ({ children }) => {
       toast.error(error.message);
     }
   };
+  console.log("Backend URL is:", import.meta.env.VITE_BACKEND_URL);
 
   const getCartData = async () => {
     try {
-      console.log("API URL:", url);
-
       let response = await axios.get(`${url}/api/cart/getCartData`, {
         withCredentials: true,
       });
