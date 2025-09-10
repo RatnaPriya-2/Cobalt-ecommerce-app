@@ -239,7 +239,6 @@ const AppProvider = ({ children }) => {
 
   useEffect(() => {
     fetchProducts();
-    getCartData();
   }, []);
 
   useEffect(() => {
