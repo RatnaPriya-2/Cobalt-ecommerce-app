@@ -238,6 +238,11 @@ const AppProvider = ({ children }) => {
   }, [userToken]);
 
   useEffect(() => {
+    fetchProducts();
+    getCartData();
+  }, []);
+
+  useEffect(() => {
     setFilteredProducts(products);
   }, [products]);
 
