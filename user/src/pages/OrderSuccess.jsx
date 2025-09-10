@@ -12,7 +12,7 @@ const OrderSuccess = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const tempOrderId = searchParams.get("tempOrder");
 
-  const [verifyOrderStatus, setVerifyOrderStatus] = useState(false);
+  const [verifyOrderStatus, setVerifyOrderStatus] = useState(null); // null = loading, true = success, false = error
 
   const navigate = useNavigate();
 
@@ -41,15 +41,18 @@ const OrderSuccess = () => {
           setVerifyOrderStatus(true);
         } else {
           toast.error(response.data.message);
+          setVerifyOrderStatus(false);
           navigate("/placeOrder");
         }
       } catch (error) {
         toast.error(error.message);
+        setVerifyOrderStatus(false);
+        navigate("/placeOrder");
       }
     };
 
     verifyOrder();
-  }, [setCartProducts, tempOrderId]);
+  }, [setCartProducts, tempOrderId, paymentMethod]);
 
   // Redirect to orders page after 5 seconds
   // This is to give the user time to see the success message before redirecting
@@ -62,13 +65,20 @@ const OrderSuccess = () => {
       }, 5000);
     } else {
       timer = setTimeout(() => {
-        navigate("/placeORder");
+        navigate("/placeOrder");
       }, 5000);
     }
     () => clearTimeout(timer); // Cleanup timer on component unmount
   }, [verifyOrderStatus]);
 
-  
+  if (verifyOrderStatus === null) {
+    return (
+      <div className="w-full p-20">
+        <p className="text-2xl text-center">Verifying your order...</p>
+      </div>
+    );
+  }
+
   if (verifyOrderStatus) {
     return (
       <div className="w-full p-20 ">
