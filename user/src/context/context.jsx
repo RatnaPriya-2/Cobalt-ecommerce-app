@@ -55,6 +55,8 @@ const AppProvider = ({ children }) => {
 
   const getCartData = async () => {
     try {
+      console.log("API URL:", url);
+
       let response = await axios.get(`${url}/api/cart/getCartData`, {
         withCredentials: true,
       });
