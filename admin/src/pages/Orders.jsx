@@ -70,7 +70,7 @@ const Orders = () => {
             allOrders.map((order, index) => {
               let {
                 _id: id,
-                paymentDone,
+                paymentStatus: paymentDone,
                 paymentMethod,
                 userName,
                 date,
