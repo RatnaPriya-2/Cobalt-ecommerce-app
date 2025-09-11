@@ -128,7 +128,7 @@ const Orders = () => {
                         <span className="text-gray-500 font-light">
                           Method :
                         </span>{" "}
-                        {paymentMethod}
+                        {paymentMethod.map((char,i)=>i===0?char.toUpperCase():char.toLowerCase()).join("")}
                       </p>
                       <p>
                         <span className="text-gray-500 font-light">
