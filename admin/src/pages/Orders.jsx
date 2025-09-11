@@ -53,6 +53,8 @@ const Orders = () => {
     fetchAllOrders();
   }, []);
 
+  console.log(allOrders);
+
   if (loading) {
     return <p className="p-10 text-lg text-gray-600">Loading...</p>;
   }
