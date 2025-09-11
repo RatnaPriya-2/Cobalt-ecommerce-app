@@ -128,13 +128,18 @@ const Orders = () => {
                         <span className="text-gray-500 font-light">
                           Method :
                         </span>{" "}
-                        {paymentMethod.split("").map((char,i)=>i===0?char.toUpperCase():char.toLowerCase()).join("")}
+                        {paymentMethod
+                          .split("")
+                          .map((char, i) =>
+                            i === 0 ? char.toUpperCase() : char.toLowerCase()
+                          )
+                          .join("")}
                       </p>
                       <p>
                         <span className="text-gray-500 font-light">
                           Payment :
                         </span>{" "}
-                        {paymentDone}
+                        {paymentDone === "Completed" ? "Done" : "Pending"}
                       </p>
                       <p>
                         <span className="text-gray-500 font-light">Date :</span>{" "}
