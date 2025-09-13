@@ -38,7 +38,7 @@ const StripeWebhookController = async (req, res) => {
 
     let getTempOrder = await temporaryOrderModel.findOneAndUpdate(
       { _id: tempOrderId },
-      { paymentStatus: "Completed" },
+      { paymentStatus: "Paid" },
       { new: true }
     );
 

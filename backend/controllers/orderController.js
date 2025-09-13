@@ -198,7 +198,7 @@ const verifyRazorpayPayment = async (req, res) => {
     try {
       const tempOrder = await temporaryOrderModel.findOneAndUpdate(
         { razorpayOrderId: orderId },
-        { paymentStatus: "Completed" },
+        { paymentStatus: "Paid" },
         { new: true }
       );
 

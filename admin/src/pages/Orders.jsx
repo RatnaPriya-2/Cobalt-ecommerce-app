@@ -139,7 +139,7 @@ const Orders = () => {
                         <span className="text-gray-500 font-light">
                           Payment :
                         </span>{" "}
-                        {paymentDone === "Completed" ? "Done" : "Pending"}
+                        {paymentDone}
                       </p>
                       <p>
                         <span className="text-gray-500 font-light">Date :</span>{" "}
